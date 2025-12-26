@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Cookie&display=swap" rel="stylesheet">
+
+    <title>Heena Mam - Birthday</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #FFF6EA;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            animation: fadeBg 1s ease-in-out;
+        }
+
+        @keyframes fadeBg {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* FLOATING BACKGROUND BOXES */
+        .box {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 182, 193, 0.45);
+            border-radius: 18px;
+            animation: float 6s infinite ease-in-out alternate, glow 4s infinite ease-in-out alternate;
+            filter: blur(1px);
+            z-index: -1;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px pink; }
+            100% { box-shadow: 0 0 25px hotpink; }
+        }
+
+        .box:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 160px;
+            height: 160px;
+            background: rgba(255, 105, 180, 0.35);
+            animation-delay: 0.5s;
+        }
+
+        .box:nth-child(2) {
+            top: 60%;
+            left: 75%;
+            background: rgba(255, 182, 193, 0.5);
+            animation-delay: 1.2s;
+        }
+
+        .box:nth-child(3) {
+            top: 30%;
+            left: 40%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 160, 122, 0.4);
+            animation-delay: 2s;
+        }
+
+        .box:nth-child(4) {
+            top: 75%;
+            left: 15%;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 105, 180, 0.3);
+            animation-delay: 0.8s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-25px); }
+        }
+
+        /* MAIN CARD */
+        .border {
+            border: 2px solid red;
+            background-color: #ffd8ec;
+            box-shadow: 0 10px 25px #ffdee9;
+            border-radius: 20px;
+            position: relative;
+            z-index: 10;
+            padding: 25px;
+            width: 75%;
+            max-width: 900px;
+            margin: 50px auto;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .title {
+            text-align: center;
+            font-size: 3rem;
+            font-family: "Pacifico";
+            color: #ff003c;
+        }
+
+        .image {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image img {
+            width: 280px;
+            height: 280px;
+            border-radius: 1000px;
+            object-fit: cover;
+            border: 2px solid red;
+            box-shadow: 5px 5px 15px #ffd1dc;
+            cursor: pointer;
+            transition: 0.4s ease;
+        }
+
+        .image img:hover {
+            transform: scale(1.07);
+        }
+
+        .click {
+            font-size: 2rem;
+            font-family: "Cookie";
+            color: #ff2658;
+            text-align: center;
+        }
+
+        /* FULLY FIXED CENTER POPUP */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff0f6;
+            border: 2px solid #ff003c;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: #ff003c;
+            box-shadow: 0 5px 15px #ffb6c1;
+            z-index: 999;
+            width: 80%;
+            max-width: 450px;
+            animation: popupAnim 0.4s ease-out;
+        }
+
+        @keyframes popupAnim {
+            from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* FIREWORKS */
+        .firework {
+            position: absolute;
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ff0055, transparent);
+            animation: explode 0.8s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .border {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 2rem;
+                line-height: 48px;
+            }
+
+            .image img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .click {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <div class="border">
+        <div class="title">Happy Birthday To My Favorite Teacher</div>
+
+        <div class="image">
+            <img id="heenaImg" src="images/Heena.png" alt="Heena Mam">
+            <style>
+                #heenaImg{
+                    object-fit: cover;
+                }
+            </style>
+            <span class="click">Mam, click on the image… there is a thank you message for you!</span>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <h1>🎉 Happy Birthday, Heena Mam! 🎉</h1>
+        <p>
+            To the teacher who fixes errors in code and brings clarity to life…
+            Mam, you're the one I trust the most.  
+            Your guidance becomes the light I follow.  
+            No virus can stop your awesomeness.  
+            The teacher who will always remain my favorite. ❤
+        </p>
+    </div>
+
+    <script>
+        const img = document.getElementById('heenaImg');
+        const popup = document.getElementById('popup');
+
+        function createFireworks(x, y) {
+            for (let i = 0; i < 30; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 150;
+                const colors = ['#ff0055', '#ffbb00', '#00ffbb', '#00bbff', '#ff00aa'];
+
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+                firework.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
+            }
+        }
+
+        img.addEventListener('click', () => {
+            popup.style.display = 'block';
+
+            let count = 0;
+            const interval = setInterval(() => {
+                createFireworks(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight
+                );
+                count++;
+                if (count > 15) clearInterval(interval);
+            }, 200);
+        });
+    </script>
+
+</body>
+</html>
